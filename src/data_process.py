@@ -34,5 +34,3 @@ device = nn.device("cuda" if nn.cuda.is_available() else "cpu")
 tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
 model = AutoModel.from_pretrained("ProsusAI/finbert").to(device)
 model.eval()
-
-
