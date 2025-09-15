@@ -5,7 +5,7 @@ import seaborn as sns
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
-from transformers import AutoTokenizer, Automodel
+from transformers import AutoTokenizer, AutoModel
 import re
 import html
 
@@ -30,8 +30,8 @@ def clean_df(text):
     return text.strip()
 
 df['cleaned_text'] = df['Sentence'].apply(clean_df)
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-tokenizer = AutoTokensizer.from_pretrained("ProsusAI/finbert")
+device = nn.device("cuda" if nn.cuda.is_available() else "cpu")
+tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
 model = AutoModel.from_pretrained("ProsusAI/finbert").to(device)
 model.eval()
 
